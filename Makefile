@@ -6,7 +6,7 @@
 #    By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/31 16:49:31 by elvmarti          #+#    #+#              #
-#    Updated: 2021/10/03 15:59:09 by elvmarti         ###   ########.fr        #
+#    Updated: 2021/10/03 17:40:04 by elvmarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,12 @@ NAME = push_swap
 
 HEADER = push_swap.h
 
-SRCS = main.c \
-		print_str.c \
-		ps_lists.c \
-		rule_sx.c \
-		rule_px.c
+SRCS = srcs/main.c \
+		srcs/print_str.c \
+		srcs/ps_lists.c \
+		srcs/rule_sx.c \
+		srcs/rule_px.c \
+		srcs/rule_rx.c
 
 OBJS = $(SRCS:.c=.o)
 

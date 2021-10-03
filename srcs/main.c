@@ -6,11 +6,11 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 16:40:23 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/10/03 16:56:09 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/10/03 17:35:01 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 static void	check_only_spaces(char **argv)
 {

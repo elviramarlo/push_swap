@@ -6,11 +6,11 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 19:50:44 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/10/03 16:16:53 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/10/03 17:34:51 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	rule_sa(t_push_swap *ps)
 {	

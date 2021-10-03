@@ -6,7 +6,7 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 16:40:23 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/09/29 19:43:52 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/10/03 16:56:09 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ static void	check_only_spaces(char **argv)
 	}
 }
 
-
 static void	check_arg(char **argv, int i)
 {
 	int y;
@@ -67,6 +66,16 @@ static void	check_arg(char **argv, int i)
 	check_only_spaces(argv);
 }
 
+static void rules(t_push_swap *ps)
+{
+	//rule_sa(ps);
+	rule_pb(&ps);
+	print_stacks(ps);
+	//rule_pb(&ps);
+	rule_pa(&ps);
+	print_stacks(ps);
+}
+
 int	main(int argc, char **argv)
 {
 	int			i;
@@ -90,16 +99,12 @@ int	main(int argc, char **argv)
 			while (tmp[y])
 			{
 				num = ft_atoi(tmp[y]);
-				//printf("%d ", num);
 				ft_lstadd_back_ps(&ps.stack_a, ft_lstnew_ps(num));
 				y++;
 			}
 		}
 	}
-	print_stacks(&ps);
-	//rule_sa(&ps);
-	rule_pa(&ps);
-	print_stacks(&ps);
+	rules(&ps);
 }
 
 

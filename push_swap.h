@@ -6,7 +6,7 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 17:20:14 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/09/29 19:57:27 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/10/03 17:03:52 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ t_listps	*ft_lstlast_ps(t_listps *lst);
 void		ft_lstadd_back_ps(t_listps **lst, t_listps *new);
 void		ft_lstiter_ps(t_listps *lst, void (*f)(int));
 int			ft_lstsize_ps(t_listps *lst);
-void		ft_lstdelone_ps(t_listps *lst, void (*del)(int));
+void		ft_lstdelone_ps(t_listps *lst);
+void		ft_lstadd_front_ps(t_listps **lst, t_listps *new);
 
 void		print_stacks(t_push_swap *ps);
 void		print_lst(int i);
@@ -48,6 +49,7 @@ void		print_error(char *str);
 void		rule_sa(t_push_swap *ps);
 void		rule_sb(t_push_swap *ps);
 void		rule_ss(t_push_swap *ps);
-void		rule_pa(t_push_swap *ps);
+void		rule_pb(t_push_swap **ps);
+void		rule_pa(t_push_swap **ps);
 
 #endif

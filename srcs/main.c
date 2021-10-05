@@ -6,7 +6,7 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 16:40:23 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/10/05 22:51:43 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/10/05 23:44:20 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,15 +68,37 @@ static void	check_arg(char **argv, int i)
 
 static void rules(t_push_swap *ps)
 {
+	t_listps *tmp;
+	int aux;
+	int check = 1;
+
+	while (check == 1)
+	{
+		tmp = ps->stack_a;
+		check = 0;
+		while (tmp->next)
+		{
+			if (tmp->num > tmp->next->num)
+			{
+				aux = tmp->num;
+				tmp->num = tmp->next->num;
+				tmp->next->num = aux;
+				check = 1;
+			}
+			tmp = tmp->next;
+		}
+	}
+
+
 	print_stacks(ps);
 	//rule_sa(ps);
 	//rule_pb(&ps);
-	rule_pb(&ps);
-	rule_pb(&ps);
-	rule_pb(&ps);
+	//rule_pb(&ps);
+	//rule_pb(&ps);
+	//rule_pb(&ps);
 	//rule_ra(&ps);
-	rule_rrr(&ps);
-	print_stacks(ps);
+	//rule_rrr(&ps);
+	//print_stacks(ps);
 }
 
 int	main(int argc, char **argv)

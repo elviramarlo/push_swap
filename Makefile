@@ -6,7 +6,7 @@
 #    By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/31 16:49:31 by elvmarti          #+#    #+#              #
-#    Updated: 2021/10/05 16:20:29 by elvmarti         ###   ########.fr        #
+#    Updated: 2021/10/08 17:14:24 by elvmarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ SRCS = srcs/main.c \
 		srcs/rule_sx.c \
 		srcs/rule_px.c \
 		srcs/rule_rx.c \
-		srcs/rule_rrx.c
+		srcs/rule_rrx.c \
+		srcs/sort_small.c
 
 OBJS = $(SRCS:.c=.o)
 

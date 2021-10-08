@@ -6,7 +6,7 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 16:40:23 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/10/05 23:55:31 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/10/08 17:20:09 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,26 +68,15 @@ static void	check_arg(char **argv, int i)
 
 static void rules(t_push_swap *ps)
 {
-	t_listps *tmp;
-	int aux;
-	int check = 1;
+	int i;
 
-	while (check == 1)
+	i = ft_lstsize_ps(ps->stack_a);
+	if (i <= 5)
 	{
-		tmp = ps->stack_a;
-		check = 0;
-		while (tmp->next)
-		{
-			if (tmp->num > tmp->next->num)
-			{
-				aux = tmp->num;
-				tmp->num = tmp->next->num;
-				tmp->next->num = aux;
-				check = 1;
-			}
-			tmp = tmp->next;
-		}
+		sort_small_stack(ps);
 	}
+
+	
 	print_stacks(ps);
 	//rule_sa(ps);
 	//rule_pb(&ps);
@@ -132,31 +121,26 @@ int	main(int argc, char **argv)
 	rules(&ps);
 }
 
+//PARA ORDENAR STACK A:
+/* 
+	t_listps *tmp;
+	int aux;
+	int check = 1;
 
-
-
-
-
-/* static void	compare_nums(char **tmp)
-{
-	int x;
-	int y;
-	char	*tmp2;
-
-	x = 0;
-	y = 0;
-
-	while(tmp[x])
+	while (check == 1)
 	{
-		tmp2 = ft_strdup(tmp[x]);
-			y = x + 1;
-			printf("%s", tmp[x]);
-		while (tmp[y])
+		tmp = ps->stack_a;
+		check = 0;
+		while (tmp->next)
 		{
-			printf("Error");
-			
-			y++;
+			if (tmp->num > tmp->next->num)
+			{
+				aux = tmp->num;
+				tmp->num = tmp->next->num;
+				tmp->next->num = aux;
+				check = 1;
+			}
+			tmp = tmp->next;
 		}
-		x++;
-	}
-} */
+	} */
+

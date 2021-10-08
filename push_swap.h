@@ -6,7 +6,7 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 17:20:14 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/10/05 22:48:39 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/10/08 17:14:03 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,7 @@ void		rule_rr(t_push_swap **ps);
 void		rule_rra(t_push_swap **ps);
 void		rule_rrb(t_push_swap **ps);
 void		rule_rrr(t_push_swap **ps);
+
+void	sort_small_stack(t_push_swap *ps);
 
 #endif

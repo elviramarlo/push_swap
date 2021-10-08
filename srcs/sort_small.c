@@ -6,7 +6,7 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 17:12:23 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/10/08 17:20:07 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/10/08 17:21:05 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@ void	sort_small_stack(t_push_swap *ps)
 	int i;
 
 	i =  ft_lstsize_ps(ps->stack_a);
-
-
+	printf("I:%d", i);
+	
 }

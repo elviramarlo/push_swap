@@ -6,7 +6,7 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 16:40:23 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/10/11 14:58:54 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/10/12 19:47:29 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,7 @@ static void	check_only_spaces(char **argv)
 			exit(1);
 		}
 		while (argv[x][y] == ' ')
-		{
 			y++;
-		}
 		if(argv[x][y] == '\0')
 		{
 			print_error("Error");
@@ -75,13 +73,12 @@ static void rules(t_push_swap *ps)
 	{
 		sort_small_stack(ps);
 	}
-
 	
 	//print_stacks(ps);
 	//rule_sa(ps);
 	//rule_pb(&ps);
 	//rule_pb(&ps);
-//	rule_ra(&ps);
+	//rule_rra(&ps);
 	//rule_pa(&ps);
 	//rule_rr(&ps);
 	//rule_pa(&ps);

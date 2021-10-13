@@ -6,7 +6,7 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 16:40:23 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/10/08 17:20:09 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/10/13 16:20:46 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,7 @@ static void	check_only_spaces(char **argv)
 			exit(1);
 		}
 		while (argv[x][y] == ' ')
-		{
 			y++;
-		}
 		if(argv[x][y] == '\0')
 		{
 			print_error("Error");
@@ -68,23 +66,23 @@ static void	check_arg(char **argv, int i)
 
 static void rules(t_push_swap *ps)
 {
-	int i;
+	int size;
 
-	i = ft_lstsize_ps(ps->stack_a);
-	if (i <= 5)
-	{
-		sort_small_stack(ps);
-	}
-
-	
-	print_stacks(ps);
+	size = ft_lstsize_ps(ps->stack_a);
+	if (size <= 5)
+		sort_small_stack(ps, size);
+	else if (size > 5)
+		sort_big_stack(ps, size);	
+	//print_stacks(ps);
 	//rule_sa(ps);
 	//rule_pb(&ps);
 	//rule_pb(&ps);
-	//rule_pb(&ps);
-	//rule_ra(&ps);
-	//rule_rrr(&ps);
-	//print_stacks(ps);
+	//rule_rra(&ps);
+	//rule_pa(&ps);
+	//rule_rr(&ps);
+	//rule_pa(&ps);
+	//rule_sa(ps);
+	print_stacks(ps);
 }
 
 int	main(int argc, char **argv)

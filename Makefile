@@ -6,11 +6,13 @@
 #    By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/31 16:49:31 by elvmarti          #+#    #+#              #
-#    Updated: 2021/10/08 17:14:24 by elvmarti         ###   ########.fr        #
+#    Updated: 2021/10/13 19:41:33 by elvmarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
+
+FU_ELVIRA = push_swap_debug
 
 HEADER = push_swap.h
 
@@ -21,7 +23,8 @@ SRCS = srcs/main.c \
 		srcs/rule_px.c \
 		srcs/rule_rx.c \
 		srcs/rule_rrx.c \
-		srcs/sort_small.c
+		srcs/sort_small.c \
+		srcs/sort_big.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -41,11 +44,17 @@ $(NAME): $(OBJS) $(LIBFT)
 		@echo $(PURPLE)Compiling ... $(RESET)
 		$(CC) ${CFLAGS} ${OBJS} -I $(HEADER) -L. ${LIBFT} -o ${NAME}
 
+$(FU_ELVIRA): $(OBJS) $(LIBFT)
+		@echo $(PURPLE)Compiling ... $(RESET)
+		$(CC) ${CFLAGS} -I $(HEADER) -g ${SRCS} ${LIBFT} -o ${FU_ELVIRA}
+
 $(LIBFT):		
 		@echo $(PURPLE)Libft $(RESET)
 		make re -C $(LIBFTPATH)
 
 all: $(NAME)
+
+debug: $(FU_ELVIRA)
 
 clean:
 		@echo $(PURPLE)Cleaning ... $(RED)

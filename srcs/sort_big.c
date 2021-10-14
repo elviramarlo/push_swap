@@ -6,24 +6,23 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 15:51:57 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/10/13 19:26:20 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/10/14 16:32:17 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static void	sort_onehundred(t_push_swap *ps , int size)
+int	get_min_num(t_push_swap *ps)
 {
-	t_listps *tmp;
-	int i = 0;
-	int min_num;
-	int check = 1;
+	t_listps	*tmp;
+	int			min_num;
+	int			check;
 
 	min_num = ps->stack_a->num;
+	check = 1;
 	while (check == 1)
 	{
 		tmp = ps->stack_a;
-		check = 0;
 		while (tmp)
 		{
 			if (tmp->num < min_num)
@@ -32,10 +31,22 @@ static void	sort_onehundred(t_push_swap *ps , int size)
 				check = 1;
 			}
 			tmp = tmp->next;
+			check = 0;
 		}
 	}
-	printf("\nMIN NUM: %d\n", min_num);
+	return (min_num);
+}	
+
+static void	sort_onehundred(t_push_swap *ps , int size)
+{
+	t_listps *tmp;
+	int i;
+	int min_num;
+	
+	min_num = get_min_num(ps);
+	//printf("\nMIN NUM: %d\n", min_num);
 	tmp = ps->stack_a;
+	i = 0;
 	while (tmp->next)
 	{
 		if (tmp->num == min_num)
@@ -44,26 +55,14 @@ static void	sort_onehundred(t_push_swap *ps , int size)
 		i++;
 	}
 	//printf("AAAA %d", size);
-	if (i < size / 2)
+	while (ps->stack_a->num != min_num)
 	{
-		while (i > 0)
-		{
+		if (i < size / 2)
 			rule_ra(&ps);
-			i--;
-		}
-		rule_pb(&ps);
-	}
-	else if (i >= size / 2)
-	{
-		i = size - i;
-		while (i > 0)
-		{
+		else
 			rule_rra(&ps);
-			i--;
-		}
-		rule_pb(&ps);
 	}
-	//size++;
+	rule_pb(&ps);
 }
 
 void	sort_big_stack(t_push_swap *ps, int size)
@@ -72,5 +71,7 @@ void	sort_big_stack(t_push_swap *ps, int size)
 	{
 		while (ps->stack_a->next)
 			sort_onehundred(ps , size);
+		while (ps->stack_b)
+			rule_pa(&ps);
 	}
 }

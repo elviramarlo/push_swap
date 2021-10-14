@@ -6,7 +6,7 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 16:40:23 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/10/13 16:20:46 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/10/14 15:57:12 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ static void rules(t_push_swap *ps)
 	//rule_pa(&ps);
 	//rule_sa(ps);
 	print_stacks(ps);
+	printf("NUM MOVS: %d\n", ps->num_mov);
 }
 
 int	main(int argc, char **argv)

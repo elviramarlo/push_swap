@@ -6,7 +6,7 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 17:12:23 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/10/13 16:20:49 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/10/14 16:30:45 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,68 +41,58 @@ void	sort_three(t_push_swap *ps)
 
 void	sort_four(t_push_swap *ps, int size)
 {
-	while(size > 3)
-	{
-		int pos1 = ps->stack_a->num;
-		int pos2 = ps->stack_a->next->num;
-		int pos3 = ps->stack_a->next->next->num;
-		int pos4 = ps->stack_a->next->next->next->num;
+	t_listps	*tmp;
+	int			min_num;
+	int			i;
 
-		if (pos1 < pos2 && pos1 < pos3 && pos1 < pos4)
-		{
-			rule_pb(&ps);
-			size--;
-		}
-		else if (pos1 > pos2)
-			rule_sa(ps);
-		else if (pos1 > pos3)
-		{
-			rule_ra(&ps);
-			rule_ra(&ps);
-		}
-		else if (pos1 > pos4)
-		{
-			rule_rra(&ps);
-			rule_rra(&ps);
-		}
+	min_num = get_min_num(ps);
+	tmp = ps->stack_a;
+	i = 0;
+	while (tmp->next)
+	{
+		if (tmp->num == min_num)
+			break ;
+		tmp = tmp->next;
+		i++;
 	}
+	while (ps->stack_a->num != min_num)
+	{
+		if (i < size / 2)
+			rule_ra(&ps);
+		else
+			rule_rra(&ps);
+	}
+	rule_pb(&ps);
 	sort_three(ps);
-	rule_pa(&ps);
 	rule_pa(&ps);
 }
 
 void	sort_five(t_push_swap *ps, int size)
 {
-	while (size > 4)  
-	{
-		int pos1 = ps->stack_a->num;
-		int pos2 = ps->stack_a->next->num;
-		int pos3 = ps->stack_a->next->next->num;
-		int pos4 = ps->stack_a->next->next->next->num;
-		int pos5 = ps->stack_a->next->next->next->next->num;
+	t_listps	*tmp;
+	int			min_num;
+	int			i;
 
-		if (pos1 < pos2 && pos1 < pos3 && pos1 < pos4 && pos1 < pos5)
-		{
-			rule_pb(&ps);
-			size--;
-		}
-		else if (pos1 > pos2)
-			rule_sa(ps);
-		else if (pos1 > pos3)
-		{
+	min_num = get_min_num(ps);
+	tmp = ps->stack_a;
+	i = 0;
+	while (tmp->next)
+	{
+		if (tmp->num == min_num)
+			break ;
+		tmp = tmp->next;
+		i++;
+	}
+	while (ps->stack_a->num != min_num)
+	{
+		if (i < size)
 			rule_ra(&ps);
-			rule_ra(&ps);
-		}
-		else if (pos1 > pos4)
-		{
-			rule_rra(&ps);
-			rule_rra(&ps);
-		}
-		else if (pos1 > pos5)
+		else
 			rule_rra(&ps);
 	}
+	rule_pb(&ps);
 	sort_four(ps, size);
-	
+	rule_pa(&ps);
 }
 
 void	sort_small_stack(t_push_swap *ps, int size)

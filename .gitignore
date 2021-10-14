@@ -1,0 +1,6 @@
+*.o
+push_swap
+push_swap_debug
+nums.txt
+.vscode
+*.dSYM

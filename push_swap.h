@@ -6,7 +6,7 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 17:20:14 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/10/14 16:03:47 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/10/20 16:55:27 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,12 @@ typedef struct s_push_swap
 {
 	t_listps	*stack_a;
 	t_listps	*stack_b;
+	t_listps	*stack_a_copy;
 	int			num_mov;
+	int			hold_first;
+	int			pos_first;
+	int			hold_second;
+	int			pos_second;
 }				t_push_swap;
 
 t_listps	*ft_lstnew_ps(int num);
@@ -58,12 +63,13 @@ void		rule_rra(t_push_swap **ps);
 void		rule_rrb(t_push_swap **ps);
 void		rule_rrr(t_push_swap **ps);
 
-void	sort_small_stack(t_push_swap *ps, int size);
-void	three(t_push_swap *ps);
-void	sort_four(t_push_swap *ps, int size);
-void	sort_five(t_push_swap *ps, int size);
-void	sort_big_stack(t_push_swap *ps, int size);
+void		sort_small_stack(t_push_swap *ps, int size);
+void		three(t_push_swap *ps);
+void		sort_four(t_push_swap *ps, int size);
+void		sort_five(t_push_swap *ps, int size);
+void		sort_big_stack(t_push_swap *ps, int size);
 
-int		get_min_num(t_push_swap *ps);
+int			get_min_num(t_push_swap *ps);
+void		sort_copy(t_push_swap *ps);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/31 16:49:31 by elvmarti          #+#    #+#              #
-#    Updated: 2021/10/13 19:41:33 by elvmarti         ###   ########.fr        #
+#    Updated: 2021/10/21 16:58:15 by elvmarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ SRCS = srcs/main.c \
 		srcs/rule_rx.c \
 		srcs/rule_rrx.c \
 		srcs/sort_small.c \
-		srcs/sort_big.c
+		srcs/sort_big.c \
+		srcs/min_max_num.c
 
 OBJS = $(SRCS:.c=.o)
 

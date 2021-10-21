@@ -6,65 +6,41 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 15:51:57 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/10/20 16:59:48 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/10/21 17:09:16 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	get_min_num(t_push_swap *ps)
-{
-	t_listps	*tmp;
-	int			min_num;
-	int			check;
-
-	min_num = ps->stack_a->num;
-	check = 1;
-	while (check == 1)
-	{
-		tmp = ps->stack_a;
-		while (tmp)
-		{
-			if (tmp->num < min_num)
-			{
-				min_num = tmp->num;
-				check = 1;
-			}
-			tmp = tmp->next;
-			check = 0;
-		}
-	}
-	return (min_num);
-}	
-
-/* static void	sort_onehundred(t_push_swap *ps , int size)
+static void	sort_onehundred(t_push_swap *ps , int size)
 {
 	t_listps *tmp;
 	int i;
-	int min_num;
+	int max_num;
 	
-	min_num = get_min_num(ps);
+	max_num = get_max_num(ps);
 	//printf("\nMIN NUM: %d\n", min_num);
-	tmp = ps->stack_a;
+	tmp = ps->stack_b;
 	i = 0;
 	while (tmp->next)
 	{
-		if (tmp->num == min_num)
+		if (tmp->num == max_num)
 			break;
 		tmp = tmp->next;
 		i++;
 	}
 	//printf("AAAA %d", size);
-	while (ps->stack_a->num != min_num)
+	while (ps->stack_b->num != max_num)
 	{
 		if (i < size / 2)
-			rule_ra(&ps);
+			rule_rb(&ps);
 		else
-			rule_rra(&ps);
+			rule_rrb(&ps);
 	}
-	rule_pb(&ps);
-} */
-void	chunks(t_push_swap *ps)
+	rule_pa(&ps);
+}
+
+void	chunks(t_push_swap *ps, int num)
 {
 	t_listps	*tmp;
 	t_listps	*tmp_copy;
@@ -78,7 +54,7 @@ void	chunks(t_push_swap *ps)
 	{
 		tmp_copy = ps->stack_a_copy;
 		i_copy = 0;
-		while (i_copy < 20)
+		while (i_copy < num)
 		{
 			if (tmp->num == tmp_copy->num)
 			{
@@ -104,7 +80,7 @@ void	chunks(t_push_swap *ps)
 	{
 		tmp_copy = ps->stack_a_copy;
 		i_copy = 0;
-		while (i_copy < 20)
+		while (i_copy < num)
 		{
 			if (tmp->num == tmp_copy->num)
 			{
@@ -118,7 +94,28 @@ void	chunks(t_push_swap *ps)
 		i++;
 	}
 	printf("HOLD SECOND: %d\n", ps->hold_second);
+	//printf("POS: %d\n", ps->pos_second);
+	ps->pos_second = ft_lstsize_ps(ps->stack_a) - ps->pos_second;
 	printf("POS: %d\n", ps->pos_second);
+	i = 0;
+	if (ps->pos_first <= ps->pos_second)
+	{
+		while (i < ps->pos_first)
+		{
+			rule_ra(&ps);
+			i++;
+		}
+		rule_pb(&ps);
+	}
+	else
+	{
+		while (i < ps->pos_second)
+		{
+			rule_rra(&ps);
+			i++;
+		}
+		rule_pb(&ps);
+	}
 }
 
 void	sort_copy(t_push_swap *ps)
@@ -147,13 +144,42 @@ void	sort_copy(t_push_swap *ps)
 
 void	sort_big_stack(t_push_swap *ps, int size)
 {
+	int	i;
+
+	i = 0; 
 	if (size <= 100)
 	{
-		/* while (ps->stack_a->next)
-			sort_onehundred(ps , size);
-		while (ps->stack_b)
-			rule_pa(&ps); */
 		sort_copy(ps);
-		chunks(ps);
+		while (i < 20)
+		{
+			chunks(ps, 20);
+			i++;
+		}
+		while (i < 40)
+		{
+			chunks(ps, 40);
+			i++;
+		}
+			while (i < 60)
+		{
+			chunks(ps, 60);
+			i++;
+		}
+			while (i < 80)
+		{
+			chunks(ps, 80);
+			i++;
+		}
+			while (i < 100)
+		{
+			chunks(ps, 100);
+			i++;
+		}
+		i = 0;
+		while (i < 100)
+		{
+			sort_onehundred(ps, 100);
+			i++;
+		}
 	}
 }

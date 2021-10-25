@@ -6,7 +6,7 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/13 00:24:24 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/10/24 18:22:47 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/10/25 15:42:43 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	print_stacks(t_push_swap *ps)
 
 void	print_str(char *str)
 {
-	int i;
+	int	i;
 
 	i = ft_strlen(str);
 	write (1, str, i);

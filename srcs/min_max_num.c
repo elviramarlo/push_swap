@@ -6,23 +6,23 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 16:50:06 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/10/24 19:21:28 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/10/25 15:41:33 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	get_min_num(t_push_swap *ps)
+int	get_min_num(t_listps *list)
 {
 	t_listps	*tmp;
 	int			min_num;
 	int			check;
 
-	min_num = ps->stack_a->num;
+	min_num = list->num;
 	check = 1;
 	while (check == 1)
 	{
-		tmp = ps->stack_a;
+		tmp = list;
 		while (tmp)
 		{
 			if (tmp->num < min_num)
@@ -37,17 +37,17 @@ int	get_min_num(t_push_swap *ps)
 	return (min_num);
 }
 
-int	get_max_num(t_push_swap *ps)
+int	get_max_num(t_listps *list)
 {
 	t_listps	*tmp;
 	int			max_num;
 	int			check;
 
-	max_num = ps->stack_b->num;
+	max_num = list->num;
 	check = 1;
 	while (check == 1)
 	{
-		tmp = ps->stack_b;
+		tmp = list;
 		while (tmp)
 		{
 			if (tmp->num > max_num)
@@ -64,10 +64,12 @@ int	get_max_num(t_push_swap *ps)
 
 int	get_mid(t_push_swap *ps)
 {
-	int size = ft_lstsize_ps(ps->stack_a) / 2;
-	int i = 0;
-	t_listps *tmp;
+	int			size;
+	int			i;
+	t_listps	*tmp;
 
+	i = 0;
+	size = ft_lstsize_ps(ps->stack_a) / 2;
 	tmp = ps->stack_a_copy;
 	while (i < size)
 	{
@@ -79,10 +81,11 @@ int	get_mid(t_push_swap *ps)
 
 void	sort_copy(t_push_swap *ps)
 {
-	t_listps *tmp;
-	int aux;
-	int check = 1;
+	t_listps	*tmp;
+	int			aux;
+	int			check;
 
+	check = 1;
 	while (check == 1)
 	{
 		tmp = ps->stack_a_copy;

@@ -6,7 +6,7 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 17:12:23 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/10/14 16:30:45 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/10/25 14:08:46 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	sort_four(t_push_swap *ps, int size)
 	int			min_num;
 	int			i;
 
-	min_num = get_min_num(ps);
+	min_num = get_min_num(ps->stack_a);
 	tmp = ps->stack_a;
 	i = 0;
 	while (tmp->next)
@@ -73,7 +73,7 @@ void	sort_five(t_push_swap *ps, int size)
 	int			min_num;
 	int			i;
 
-	min_num = get_min_num(ps);
+	min_num = get_min_num(ps->stack_a);
 	tmp = ps->stack_a;
 	i = 0;
 	while (tmp->next)

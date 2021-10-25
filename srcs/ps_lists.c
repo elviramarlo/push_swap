@@ -6,7 +6,7 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 18:10:22 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/10/05 22:42:43 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/10/25 15:43:12 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int	ft_lstsize_ps(t_listps *lst)
 	}
 	return (i);
 }
-
 
 void	ft_lstiter_ps(t_listps *lst, void (*f)(int))
 {

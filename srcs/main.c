@@ -6,7 +6,7 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 16:40:23 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/10/24 18:21:17 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/10/25 15:38:56 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 static void	check_only_spaces(char **argv)
 {
-	int x = 0;
-	int	y = 0;
+	int	x;
+	int	y;
 
+	x = 0;
+	y = 0;
 	while (argv[x])
 	{
 		if (argv[x][0] == '\0')
@@ -26,7 +28,7 @@ static void	check_only_spaces(char **argv)
 		}
 		while (argv[x][y] == ' ')
 			y++;
-		if(argv[x][y] == '\0')
+		if (argv[x][y] == '\0')
 		{
 			print_str("Error");
 			exit(1);
@@ -37,13 +39,13 @@ static void	check_only_spaces(char **argv)
 
 static void	check_arg(char **argv, int i)
 {
-	int y;
+	int	y;
 
 	y = 0;
 	while (argv[i][y])
 	{
-		if (!ft_isdigit(argv[i][y]) && !ft_strchr(argv[i], ' ') &&
-			!ft_strchr(argv[i], '-'))
+		if (!ft_isdigit(argv[i][y]) && !ft_strchr(argv[i], ' ')
+			&& !ft_strchr(argv[i], '-'))
 		{
 			print_str("Error");
 			exit(1);
@@ -64,17 +66,20 @@ static void	check_arg(char **argv, int i)
 	check_only_spaces(argv);
 }
 
-static void rules(t_push_swap *ps)
+static void	sort_nums(t_push_swap *ps)
 {
-	int size;
+	int	size;
 
 	size = ft_lstsize_ps(ps->stack_a);
 	if (size <= 5)
 		sort_small_stack(ps, size);
-	else if (size > 5)
-		sort_big_stack(ps, size);	
+	else if (size <= 100)
+		sort_onehundred(ps, size);
+	else if (size <= 500)
+		sort_fivehundred(ps, size);
 	print_stacks(ps);
 	printf("NUM MOVS: %d\n", ps->num_mov);
+	exit(0);
 }
 
 int	main(int argc, char **argv)
@@ -105,9 +110,10 @@ int	main(int argc, char **argv)
 				num = ft_atoi(tmp[y]);
 				ft_lstadd_back_ps(&ps.stack_a, ft_lstnew_ps(num));
 				ft_lstadd_back_ps(&ps.stack_a_copy, ft_lstnew_ps(num));
+				sort_copy(&ps);
 				y++;
 			}
 		}
 	}
-	rules(&ps);
+	sort_nums(&ps);
 }

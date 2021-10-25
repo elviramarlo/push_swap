@@ -6,7 +6,7 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 17:20:14 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/10/24 19:22:19 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/10/25 14:37:04 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,11 @@ void		sort_small_stack(t_push_swap *ps, int size);
 void		three(t_push_swap *ps);
 void		sort_four(t_push_swap *ps, int size);
 void		sort_five(t_push_swap *ps, int size);
-void		sort_big_stack(t_push_swap *ps, int size);
+void		sort_onehundred(t_push_swap *ps, int size);
+void		sort_fivehundred(t_push_swap *ps, int size);
 
-int			get_min_num(t_push_swap *ps);
-int			get_max_num(t_push_swap *ps);
+int			get_min_num(t_listps *list);
+int			get_max_num(t_listps *list);
 int			get_mid(t_push_swap *ps);
 void		sort_copy(t_push_swap *ps);
 void		chunks(t_push_swap *ps, int num);

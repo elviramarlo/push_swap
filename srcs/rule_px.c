@@ -6,13 +6,13 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 17:49:41 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/10/24 18:21:35 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/10/25 15:44:06 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void rule_pb(t_push_swap **ps)
+void	rule_pb(t_push_swap **ps)
 {
 	(*ps)->num_mov++;
 	if ((*ps)->stack_a)
@@ -20,14 +20,14 @@ void rule_pb(t_push_swap **ps)
 		ft_lstadd_front_ps(&(*ps)->stack_b, ft_lstnew_ps((*ps)->stack_a->num));
 		ft_lstdelone_ps((*ps)->stack_a);
 		if ((*ps)->stack_a)
-			(*ps)->stack_a= (*ps)->stack_a->next;
+			(*ps)->stack_a = (*ps)->stack_a->next;
 		else
 			(*ps)->stack_a = NULL;
 	}
 	//print_str("pb");
 }
 
-void rule_pa(t_push_swap **ps)
+void	rule_pa(t_push_swap **ps)
 {
 	(*ps)->num_mov++;
 	if ((*ps)->stack_b)

@@ -6,7 +6,7 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 17:49:41 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/10/03 17:35:06 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/10/24 18:21:35 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void rule_pb(t_push_swap **ps)
 		else
 			(*ps)->stack_a = NULL;
 	}
+	//print_str("pb");
 }
 
 void rule_pa(t_push_swap **ps)
@@ -38,4 +39,5 @@ void rule_pa(t_push_swap **ps)
 		else
 			(*ps)->stack_b = NULL;
 	}
+	//print_str("pa");
 }

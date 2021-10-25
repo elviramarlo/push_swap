@@ -6,7 +6,7 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/13 00:24:24 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/10/20 15:44:52 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/10/24 18:22:47 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ void	print_stacks(t_push_swap *ps)
 {
 	write(1, "\n\tSTACK A\n", 10);
 	ft_lstiter_ps(ps->stack_a, print_lst);
-	write(1, "\n\tSTACK A COPY\n", 15);
-	ft_lstiter_ps(ps->stack_a_copy, print_lst);
+	/* write(1, "\n\tSTACK A COPY\n", 15);
+	ft_lstiter_ps(ps->stack_a_copy, print_lst); */
 	write(1, "\n\tSTACK B\n", 10);
 	ft_lstiter_ps(ps->stack_b, print_lst);
 	write(1, "\n", 2);
 }
 
-void	print_error(char *str)
+void	print_str(char *str)
 {
 	int i;
 

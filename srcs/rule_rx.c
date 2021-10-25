@@ -6,7 +6,7 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 17:35:29 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/10/12 19:50:10 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/10/24 18:22:02 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	rule_ra(t_push_swap **ps)
 			(*ps)->stack_a = NULL;
 		ft_lstadd_back_ps(&(*ps)->stack_a, ft_lstnew_ps(tmp));
 	}
+	//print_str("ra");
 }
 
 void	rule_rb(t_push_swap **ps)
@@ -46,6 +47,7 @@ void	rule_rb(t_push_swap **ps)
 			(*ps)->stack_b = NULL;
 		ft_lstadd_back_ps(&(*ps)->stack_b, ft_lstnew_ps(tmp));
 	}
+	//print_str("rb");
 }
 
 void	rule_rr(t_push_swap **ps)

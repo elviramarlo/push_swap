@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_big.c                                         :+:      :+:    :+:   */
+/*   sort_big_mal.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 15:51:57 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/10/21 17:09:16 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/10/24 19:20:02 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static void	sort_onehundred(t_push_swap *ps , int size)
 	int max_num;
 	
 	max_num = get_max_num(ps);
-	//printf("\nMIN NUM: %d\n", min_num);
 	tmp = ps->stack_b;
 	i = 0;
 	while (tmp->next)
@@ -29,7 +28,6 @@ static void	sort_onehundred(t_push_swap *ps , int size)
 		tmp = tmp->next;
 		i++;
 	}
-	//printf("AAAA %d", size);
 	while (ps->stack_b->num != max_num)
 	{
 		if (i < size / 2)
@@ -48,13 +46,12 @@ void	chunks(t_push_swap *ps, int num)
 	int			i_copy;
 	int			check = 0;
 	
-
 	tmp = ps->stack_a;
 	while (tmp)
 	{
 		tmp_copy = ps->stack_a_copy;
 		i_copy = 0;
-		while (i_copy < num)
+		while (i_copy < num && num < ft_lstsize_ps(ps->stack_a_copy) + 1)
 		{
 			if (tmp->num == tmp_copy->num)
 			{
@@ -71,8 +68,6 @@ void	chunks(t_push_swap *ps, int num)
 		tmp = tmp->next;
 		i++;
 	}
-	printf("HOLD FIRST: %d\n", ps->hold_first);
-	printf("POS: %d\n", ps->pos_first);
 
 	i = 0;
 	tmp = ps->stack_a;
@@ -80,7 +75,7 @@ void	chunks(t_push_swap *ps, int num)
 	{
 		tmp_copy = ps->stack_a_copy;
 		i_copy = 0;
-		while (i_copy < num)
+		while (i_copy < num && num < ft_lstsize_ps(ps->stack_a_copy) + 1)
 		{
 			if (tmp->num == tmp_copy->num)
 			{
@@ -93,10 +88,7 @@ void	chunks(t_push_swap *ps, int num)
 		tmp = tmp->next;
 		i++;
 	}
-	printf("HOLD SECOND: %d\n", ps->hold_second);
-	//printf("POS: %d\n", ps->pos_second);
 	ps->pos_second = ft_lstsize_ps(ps->stack_a) - ps->pos_second;
-	printf("POS: %d\n", ps->pos_second);
 	i = 0;
 	if (ps->pos_first <= ps->pos_second)
 	{
@@ -118,30 +110,6 @@ void	chunks(t_push_swap *ps, int num)
 	}
 }
 
-void	sort_copy(t_push_swap *ps)
-{
-	t_listps *tmp;
-	int aux;
-	int check = 1;
-
-	while (check == 1)
-	{
-		tmp = ps->stack_a_copy;
-		check = 0;
-		while (tmp->next)
-		{
-			if (tmp->num > tmp->next->num)
-			{
-				aux = tmp->num;
-				tmp->num = tmp->next->num;
-				tmp->next->num = aux;
-				check = 1;
-			}
-			tmp = tmp->next;
-		}
-	}
-}
-
 void	sort_big_stack(t_push_swap *ps, int size)
 {
 	int	i;
@@ -150,36 +118,22 @@ void	sort_big_stack(t_push_swap *ps, int size)
 	if (size <= 100)
 	{
 		sort_copy(ps);
-		while (i < 20)
+		while (i < size)
 		{
-			chunks(ps, 20);
+			if (i < 20 && ps->stack_a)
+				chunks(ps, 20);
+			else if (i < 40 && ps->stack_a)
+				chunks(ps, 40);
+			else if (i < 60 && ps->stack_a)
+				chunks(ps, 60);
+			else if (i < 80 && ps->stack_a)
+				chunks(ps, 80);
+			else if (i < 100 && ps->stack_a)
+				chunks(ps, 100);
 			i++;
 		}
-		while (i < 40)
-		{
-			chunks(ps, 40);
-			i++;
-		}
-			while (i < 60)
-		{
-			chunks(ps, 60);
-			i++;
-		}
-			while (i < 80)
-		{
-			chunks(ps, 80);
-			i++;
-		}
-			while (i < 100)
-		{
-			chunks(ps, 100);
-			i++;
-		}
-		i = 0;
-		while (i < 100)
-		{
-			sort_onehundred(ps, 100);
-			i++;
-		}
+		//printf("QUEPASA %d", ft_lstsize_ps(ps->stack_a));
+		while (ft_lstsize_ps(ps->stack_b))
+			sort_onehundred(ps, ft_lstsize_ps(ps->stack_b));
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 16:40:23 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/10/20 16:08:21 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/10/24 18:21:17 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ static void	check_only_spaces(char **argv)
 	{
 		if (argv[x][0] == '\0')
 		{
-			print_error("Error");
+			print_str("Error");
 			exit(1);
 		}
 		while (argv[x][y] == ' ')
 			y++;
 		if(argv[x][y] == '\0')
 		{
-			print_error("Error");
+			print_str("Error");
 			exit(1);
 		}
 		x++;
@@ -45,18 +45,18 @@ static void	check_arg(char **argv, int i)
 		if (!ft_isdigit(argv[i][y]) && !ft_strchr(argv[i], ' ') &&
 			!ft_strchr(argv[i], '-'))
 		{
-			print_error("Error");
+			print_str("Error");
 			exit(1);
 		}
 		if (ft_isalpha(argv[i][y]))
 		{
-			print_error("Error");
+			print_str("Error");
 			exit(1);
 		}
 		if (argv[i][y] == '-' && (argv[i][y + 1] == ' ' ||
 			argv[i][y + 1] == '-' || argv[i][y + 1] == '\0'))
 		{	
-			print_error("Error");
+			print_str("Error");
 			exit(1);
 		}
 		y++;
@@ -89,7 +89,7 @@ int	main(int argc, char **argv)
 	i = 1;
 	if (argc < 2)
 	{
-		print_error("Error");
+		print_str("Error");
 		exit(1);
 	}
 	else

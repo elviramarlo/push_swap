@@ -6,7 +6,7 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 19:50:44 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/10/24 18:22:12 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/10/26 16:10:12 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	rule_sa(t_push_swap *ps)
 		ps->stack_a->num = ps->stack_a->next->num;
 		ps->stack_a->next->num = tmp;
 	}
-	//print_str("sa");
+	print_str("sa");
 }
 
 void	rule_sb(t_push_swap *ps)
@@ -37,7 +37,7 @@ void	rule_sb(t_push_swap *ps)
 		ps->stack_b->num = ps->stack_b->next->num;
 		ps->stack_b->next->num = tmp;
 	}
-	//print_str("sb");
+	print_str("sb");
 }
 
 void	rule_ss(t_push_swap *ps)

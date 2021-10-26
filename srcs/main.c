@@ -6,7 +6,7 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 16:40:23 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/10/25 15:38:56 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/10/26 16:41:25 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,8 @@ static void	sort_nums(t_push_swap *ps)
 	size = ft_lstsize_ps(ps->stack_a);
 	if (size <= 5)
 		sort_small_stack(ps, size);
-	else if (size <= 100)
-		sort_onehundred(ps, size);
-	else if (size <= 500)
-		sort_fivehundred(ps, size);
+	else if (size > 5)
+		sort_big_stack(ps, size);
 	print_stacks(ps);
 	printf("NUM MOVS: %d\n", ps->num_mov);
 	exit(0);

@@ -6,7 +6,7 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 15:51:57 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/10/25 15:46:27 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/10/26 17:20:29 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,79 +38,6 @@ static void	sort_all(t_push_swap *ps, int size)
 	rule_pa(&ps);
 }
 
-void	chunks(t_push_swap *ps, int num)
-{
-	t_listps	*tmp;
-	t_listps	*tmp_copy;
-	int			i;
-	int			i_copy;
-	int			check;
-
-	tmp = ps->stack_a;
-	i = 0;
-	check = 0;
-	while (tmp)
-	{
-		tmp_copy = ps->stack_a_copy;
-		i_copy = 0;
-		while (i_copy < num && num < ft_lstsize_ps(ps->stack_a_copy) + 1)
-		{
-			if (tmp->num == tmp_copy->num)
-			{
-				ps->hold_first = tmp->num;
-				check = 1;
-				ps->pos_first = i;
-				break ;
-			}
-			tmp_copy = tmp_copy->next;
-			i_copy++;
-		}
-		if (check == 1)
-			break ;
-		tmp = tmp->next;
-		i++;
-	}
-	i = 0;
-	tmp = ps->stack_a;
-	while (tmp)
-	{
-		tmp_copy = ps->stack_a_copy;
-		i_copy = 0;
-		while (i_copy < num && num < ft_lstsize_ps(ps->stack_a_copy) + 1)
-		{
-			if (tmp->num == tmp_copy->num)
-			{
-				ps->hold_second = tmp->num;
-				ps->pos_second = i;
-			}
-			tmp_copy = tmp_copy->next;
-			i_copy++;
-		}
-		tmp = tmp->next;
-		i++;
-	}
-	ps->pos_second = ft_lstsize_ps(ps->stack_a) - ps->pos_second;
-	i = 0;
-	if (ps->pos_first <= ps->pos_second)
-	{
-		while (i < ps->pos_first)
-		{
-			rule_ra(&ps);
-			i++;
-		}
-		rule_pb(&ps);
-	}
-	else
-	{
-		while (i < ps->pos_second)
-		{
-			rule_rra(&ps);
-			i++;
-		}
-		rule_pb(&ps);
-	}
-}
-
 void	sort_onehundred(t_push_swap *ps, int size)
 {
 	int	i;
@@ -130,8 +57,8 @@ void	sort_onehundred(t_push_swap *ps, int size)
 			chunks(ps, 100);
 		i++;
 	}
-	while (ft_lstsize_ps(ps->stack_b))
-		sort_all(ps, ft_lstsize_ps(ps->stack_b));
+	/* while (ft_lstsize_ps(ps->stack_b))
+		sort_all(ps, ft_lstsize_ps(ps->stack_b)); */
 }
 
 void	sort_fivehundred(t_push_swap *ps, int size)
@@ -163,6 +90,18 @@ void	sort_fivehundred(t_push_swap *ps, int size)
 			chunks(ps, 500);
 		i++;
 	}
+	/* while (ft_lstsize_ps(ps->stack_b))
+		sort_all(ps, ft_lstsize_ps(ps->stack_b)); */
+}
+
+void	sort_big_stack(t_push_swap *ps, int size)
+{
+	if (size <= 100)
+	{
+		sort_onehundred(ps, size);
+	}
+	else if (size <= 500)
+		sort_fivehundred(ps, size);
 	while (ft_lstsize_ps(ps->stack_b))
 		sort_all(ps, ft_lstsize_ps(ps->stack_b));
 }

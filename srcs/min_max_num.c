@@ -6,7 +6,7 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 16:50:06 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/10/25 15:41:33 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/10/26 16:26:22 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,22 @@ int	get_mid(t_push_swap *ps)
 	return (tmp->num);
 }
 
+static void	num_repeat(t_push_swap *ps)
+{
+	t_listps	*tmp;
+
+	tmp = ps->stack_a_copy;
+	while(tmp->next)
+	{
+		if (tmp->num == tmp->next->num)
+		{
+			print_str("Error");
+			exit(1);
+		}
+		tmp = tmp->next;
+	}
+}
+
 void	sort_copy(t_push_swap *ps)
 {
 	t_listps	*tmp;
@@ -102,4 +118,5 @@ void	sort_copy(t_push_swap *ps)
 			tmp = tmp->next;
 		}
 	}
+	num_repeat(ps);
 }

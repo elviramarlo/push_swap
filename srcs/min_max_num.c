@@ -6,7 +6,7 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 16:50:06 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/10/26 16:26:22 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/10/28 18:37:40 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,29 +62,12 @@ int	get_max_num(t_listps *list)
 	return (max_num);
 }
 
-int	get_mid(t_push_swap *ps)
-{
-	int			size;
-	int			i;
-	t_listps	*tmp;
-
-	i = 0;
-	size = ft_lstsize_ps(ps->stack_a) / 2;
-	tmp = ps->stack_a_copy;
-	while (i < size)
-	{
-		tmp = tmp->next;
-		i++;
-	}
-	return (tmp->num);
-}
-
 static void	num_repeat(t_push_swap *ps)
 {
 	t_listps	*tmp;
 
 	tmp = ps->stack_a_copy;
-	while(tmp->next)
+	while (tmp->next)
 	{
 		if (tmp->num == tmp->next->num)
 		{
@@ -119,4 +102,19 @@ void	sort_copy(t_push_swap *ps)
 		}
 	}
 	num_repeat(ps);
+}
+
+void	is_sorted(t_push_swap *ps)
+{
+	t_listps	*tmp;
+
+	tmp = ps->stack_a;
+	while (tmp->next)
+	{
+		if (tmp->num > tmp->next->num)
+			break ;
+		tmp = tmp->next;
+	}
+	if (tmp->next == '\0')
+		exit (0);
 }

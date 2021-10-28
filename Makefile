@@ -6,7 +6,7 @@
 #    By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/31 16:49:31 by elvmarti          #+#    #+#              #
-#    Updated: 2021/10/26 16:30:26 by elvmarti         ###   ########.fr        #
+#    Updated: 2021/10/28 18:16:53 by elvmarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ HEADER = push_swap.h
 SRCS = srcs/main.c \
 		srcs/print_str.c \
 		srcs/ps_lists.c \
+		srcs/ps_lists2.c \
 		srcs/rule_sx.c \
 		srcs/rule_px.c \
 		srcs/rule_rx.c \

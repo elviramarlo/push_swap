@@ -6,7 +6,7 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 17:35:29 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/10/26 16:10:06 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/10/28 18:19:20 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	rule_ra(t_push_swap **ps)
 {
-	int tmp;
+	int	tmp;
 
 	(*ps)->num_mov++;
 	tmp = 0;
@@ -23,7 +23,7 @@ void	rule_ra(t_push_swap **ps)
 		tmp = (*ps)->stack_a->num;
 		ft_lstdelone_ps((*ps)->stack_a);
 		if ((*ps)->stack_a)
-			(*ps)->stack_a= (*ps)->stack_a->next;
+			(*ps)->stack_a = (*ps)->stack_a->next;
 		else
 			(*ps)->stack_a = NULL;
 		ft_lstadd_back_ps(&(*ps)->stack_a, ft_lstnew_ps(tmp));
@@ -33,7 +33,7 @@ void	rule_ra(t_push_swap **ps)
 
 void	rule_rb(t_push_swap **ps)
 {
-	int tmp;
+	int	tmp;
 
 	(*ps)->num_mov++;
 	tmp = 0;
@@ -42,7 +42,7 @@ void	rule_rb(t_push_swap **ps)
 		tmp = (*ps)->stack_b->num;
 		ft_lstdelone_ps((*ps)->stack_b);
 		if ((*ps)->stack_b)
-			(*ps)->stack_b= (*ps)->stack_b->next;
+			(*ps)->stack_b = (*ps)->stack_b->next;
 		else
 			(*ps)->stack_b = NULL;
 		ft_lstadd_back_ps(&(*ps)->stack_b, ft_lstnew_ps(tmp));

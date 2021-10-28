@@ -6,7 +6,7 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 19:50:44 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/10/26 16:10:12 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/10/28 18:20:00 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	rule_sa(t_push_swap *ps)
 {	
-	int tmp;
+	int	tmp;
 
 	ps->num_mov++;
 	if (ft_lstsize_ps(ps->stack_a) >= 2)
@@ -28,7 +28,7 @@ void	rule_sa(t_push_swap *ps)
 
 void	rule_sb(t_push_swap *ps)
 {	
-	int tmp;
+	int	tmp;
 
 	ps->num_mov++;
 	if (ft_lstsize_ps(ps->stack_a) >= 2)
@@ -45,5 +45,4 @@ void	rule_ss(t_push_swap *ps)
 	ps->num_mov--;
 	rule_sa(ps);
 	rule_sb(ps);
-	
 }

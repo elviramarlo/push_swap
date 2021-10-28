@@ -6,7 +6,7 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 17:20:14 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/10/26 16:51:18 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/10/28 18:28:18 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ typedef struct s_push_swap
 	int			pos_first;
 	int			hold_second;
 	int			pos_second;
-	int			mid;
+	int			i;
+	int			check;
 }				t_push_swap;
 
 t_listps	*ft_lstnew_ps(int num);
@@ -74,8 +75,8 @@ void		sort_big_stack(t_push_swap *ps, int size);
 
 int			get_min_num(t_listps *list);
 int			get_max_num(t_listps *list);
-int			get_mid(t_push_swap *ps);
 void		sort_copy(t_push_swap *ps);
+void		is_sorted(t_push_swap *ps);
 void		chunks(t_push_swap *ps, int num);
 
 #endif

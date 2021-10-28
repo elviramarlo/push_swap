@@ -6,7 +6,7 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 17:12:23 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/10/25 14:08:46 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/10/28 18:21:00 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,21 @@ void	sort_three(t_push_swap *ps)
 	one = ps->stack_a->num;
 	two = ps->stack_a->next->num;
 	three = ps->stack_a->next->next->num;
-	if (one > two && two < three && one < three) //2 1 3
+	if (one > two && two < three && one < three)
 		rule_sa(ps);
-	else if (one > two && two < three && one > three) //3 1 2
+	else if (one > two && two < three && one > three)
 		rule_ra(&ps);
-	else if (one < two && two > three && one < three) //1 3 2
+	else if (one < two && two > three && one < three)
 	{
 		rule_sa(ps);
 		rule_ra(&ps);
 	}
-	else if (one > two && two > three && one > three) //3 2 1
+	else if (one > two && two > three && one > three)
 	{
 		rule_ra(&ps);
 		rule_sa(ps);
 	}
-	else if (one < two && two > three && one > three) //2 3 1
+	else if (one < two && two > three && one > three)
 		rule_rra(&ps);
 }
 

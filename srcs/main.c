@@ -6,7 +6,7 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 16:40:23 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/10/26 16:41:25 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/10/28 18:41:08 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	check_only_spaces(char **argv)
 		if (argv[x][y] == '\0')
 		{
 			print_str("Error");
-			exit(1);
+			exit(-1);
 		}
 		x++;
 	}
@@ -48,18 +48,18 @@ static void	check_arg(char **argv, int i)
 			&& !ft_strchr(argv[i], '-'))
 		{
 			print_str("Error");
-			exit(1);
+			exit(-1);
 		}
 		if (ft_isalpha(argv[i][y]))
 		{
 			print_str("Error");
-			exit(1);
+			exit(-1);
 		}
 		if (argv[i][y] == '-' && (argv[i][y + 1] == ' ' ||
 			argv[i][y + 1] == '-' || argv[i][y + 1] == '\0'))
 		{	
 			print_str("Error");
-			exit(1);
+			exit(-1);
 		}
 		y++;
 	}
@@ -75,43 +75,58 @@ static void	sort_nums(t_push_swap *ps)
 		sort_small_stack(ps, size);
 	else if (size > 5)
 		sort_big_stack(ps, size);
-	print_stacks(ps);
+	/* print_stacks(ps);
 	printf("NUM MOVS: %d\n", ps->num_mov);
-	exit(0);
+	system("leaks push_swap"); */
 }
 
-int	main(int argc, char **argv)
+/* void	leaks(void)
+{
+	system("leaks push_swap");
+} */
+
+static void	make_list(t_push_swap *ps, char **argv)
 {
 	int			i;
 	int			y;
 	char		**tmp;
 	int			num;
+
+	i = 1;
+	while (argv[i])
+	{
+		check_arg(argv, i);
+		tmp = ft_split(argv[i], ' ');
+		i++;
+		y = 0;
+		while (tmp[y])
+		{
+			num = ft_atoi(tmp[y]);
+			free(tmp[y]);
+			ft_lstadd_back_ps(&ps->stack_a, ft_lstnew_ps(num));
+			ft_lstadd_back_ps(&ps->stack_a_copy, ft_lstnew_ps(num));
+			sort_copy(ps);
+			y++;
+		}
+		free(tmp);
+	}
+	is_sorted(ps);
+}
+
+//atexit(leaks);
+
+int	main(int argc, char **argv)
+{
 	t_push_swap	ps;
 
 	ft_bzero(&ps, sizeof(t_push_swap));
-	i = 1;
 	if (argc < 2)
 	{
 		print_str("Error");
-		exit(1);
+		exit (-1);
 	}
 	else
-	{
-		while (argv[i])
-		{
-			check_arg(argv, i);
-			tmp = ft_split(argv[i], ' ');
-			i++;
-			y = 0;
-			while (tmp[y])
-			{
-				num = ft_atoi(tmp[y]);
-				ft_lstadd_back_ps(&ps.stack_a, ft_lstnew_ps(num));
-				ft_lstadd_back_ps(&ps.stack_a_copy, ft_lstnew_ps(num));
-				sort_copy(&ps);
-				y++;
-			}
-		}
-	}
+		make_list(&ps, argv);
 	sort_nums(&ps);
+	exit (0);
 }

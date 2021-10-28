@@ -6,38 +6,11 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 18:10:22 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/10/25 15:43:12 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/10/28 18:16:24 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
-void	ft_lstdelone_ps(t_listps *lst)
-{
-	if (lst)
-		free(lst);
-}
-
-void	ft_lstadd_front_ps(t_listps **lst, t_listps *new)
-{
-	new->next = *lst;
-	*lst = new;
-}
-
-int	ft_lstsize_ps(t_listps *lst)
-{
-	int	i;
-
-	i = 1;
-	if (!lst)
-		return (0);
-	while (lst->next)
-	{
-		lst = lst->next;
-		i++;
-	}
-	return (i);
-}
 
 void	ft_lstiter_ps(t_listps *lst, void (*f)(int))
 {

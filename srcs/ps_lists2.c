@@ -1,39 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_str.c                                        :+:      :+:    :+:   */
+/*   ps_lists2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/13 00:24:24 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/10/28 18:39:55 by elvmarti         ###   ########.fr       */
+/*   Created: 2021/10/28 18:15:30 by elvmarti          #+#    #+#             */
+/*   Updated: 2021/10/28 18:16:38 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	print_str(char *str)
+void	ft_lstdelone_ps(t_listps *lst)
+{
+	if (lst)
+		free(lst);
+}
+
+void	ft_lstadd_front_ps(t_listps **lst, t_listps *new)
+{
+	new->next = *lst;
+	*lst = new;
+}
+
+int	ft_lstsize_ps(t_listps *lst)
 {
 	int	i;
 
-	i = ft_strlen(str);
-	write (1, str, i);
-	write (1, "\n", 1);
+	i = 1;
+	if (!lst)
+		return (0);
+	while (lst->next)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (i);
 }
-
-/* void	print_lst(int i)
-{
-	printf("\t  %d\n", i);
-}
-
-void	print_stacks(t_push_swap *ps)
-{
-	write(1, "\n\tSTACK A\n", 10);
-	ft_lstiter_ps(ps->stack_a, print_lst);
-	write(1, "\n\tSTACK A COPY\n", 15);
-	ft_lstiter_ps(ps->stack_a_copy, print_lst);
-	write(1, "\n\tSTACK B\n", 10);
-	ft_lstiter_ps(ps->stack_b, print_lst);
-	write(1, "\n", 2);
-} */
-

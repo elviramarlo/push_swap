@@ -6,7 +6,7 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 13:01:36 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/05/13 19:13:49 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/10/29 17:58:42 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ t_list			*ft_lstmap(t_list *ls, void *(*f)(void *), void (*dl)(void *));
 # endif
 
 int				get_next_line(int fd, char **line);
-int				is_line (int fd, char **line, char **stat, int ret);
+int				is_line(int fd, char **line, char **stat, int ret);
 void			set_static(int fd, char **stat, char *buffer);
 void			ft_null(char *str);
 

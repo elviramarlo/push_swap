@@ -6,7 +6,7 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 17:20:14 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/10/28 18:28:18 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/10/29 18:28:49 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 
 typedef struct s_listps
 {
-	int				num;
-	struct s_listps	*next;
+	int					num;
+	struct s_listps		*next;
 }				t_listps;
 
 typedef struct s_push_swap
@@ -48,35 +48,30 @@ void		ft_lstiter_ps(t_listps *lst, void (*f)(int));
 int			ft_lstsize_ps(t_listps *lst);
 void		ft_lstdelone_ps(t_listps *lst);
 void		ft_lstadd_front_ps(t_listps **lst, t_listps *new);
+void		rule_sx(t_push_swap *ps, t_listps *list, char c);
+void		rule_ss(t_push_swap *ps);
+void		rule_pb(t_push_swap **ps);
+void		rule_pa(t_push_swap **ps);
+void		rule_rx(t_push_swap **ps, t_listps **list, char c);
+void		rule_rr(t_push_swap **ps);
+void		rule_rrx(t_push_swap **ps, t_listps **list, char c);
+void		rule_rrr(t_push_swap **ps);
 
 void		print_stacks(t_push_swap *ps);
 void		print_lst(int i);
 void		print_str(char *str);
-
-void		rule_sa(t_push_swap *ps);
-void		rule_sb(t_push_swap *ps);
-void		rule_ss(t_push_swap *ps);
-void		rule_pb(t_push_swap **ps);
-void		rule_pa(t_push_swap **ps);
-void		rule_ra(t_push_swap **ps);
-void		rule_rb(t_push_swap **ps);
-void		rule_rr(t_push_swap **ps);
-void		rule_rra(t_push_swap **ps);
-void		rule_rrb(t_push_swap **ps);
-void		rule_rrr(t_push_swap **ps);
+void		error(char *str);
 
 void		sort_small_stack(t_push_swap *ps, int size);
-void		three(t_push_swap *ps);
+void		sort_three(t_push_swap *ps);
 void		sort_four(t_push_swap *ps, int size);
 void		sort_five(t_push_swap *ps, int size);
-void		sort_onehundred(t_push_swap *ps, int size);
-void		sort_fivehundred(t_push_swap *ps, int size);
 void		sort_big_stack(t_push_swap *ps, int size);
+void		chunks(t_push_swap *ps, int num);
 
 int			get_min_num(t_listps *list);
 int			get_max_num(t_listps *list);
 void		sort_copy(t_push_swap *ps);
 void		is_sorted(t_push_swap *ps);
-void		chunks(t_push_swap *ps, int num);
 
 #endif

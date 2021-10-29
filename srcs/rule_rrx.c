@@ -6,26 +6,24 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:19:07 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/10/28 18:18:40 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/10/29 17:48:10 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	rule_rra(t_push_swap **ps)
+void	rule_rrx(t_push_swap **ps, t_listps **list, char c)
 {
 	t_listps	*lst;
 	t_listps	*tmp;
 	int			i;
-	int			size;
 
-	size = ft_lstsize_ps((*ps)->stack_a) - 1;
 	(*ps)->num_mov++;
 	i = 1;
-	if (size > 0)
+	if (ft_lstsize_ps(*list) - 1 > 0)
 	{
-		lst = (*ps)->stack_a;
-		while (i < size)
+		lst = *list;
+		while (i < ft_lstsize_ps(*list) - 1)
 		{
 			lst = lst->next;
 			i++;
@@ -33,44 +31,19 @@ void	rule_rra(t_push_swap **ps)
 		tmp = lst;
 		while (lst->next)
 			lst = lst->next;
-		lst->next = (*ps)->stack_a;
-		(*ps)->stack_a = tmp->next;
+		lst->next = *list;
+		*list = tmp->next;
 		tmp->next = NULL;
 	}
-	print_str("rra");
-}
-
-void	rule_rrb(t_push_swap **ps)
-{
-	t_listps	*lst;
-	t_listps	*tmp;
-	int			i;
-	int			size;
-
-	size = ft_lstsize_ps((*ps)->stack_b) - 1;
-	(*ps)->num_mov++;
-	i = 1;
-	if (size > 0)
-	{
-		lst = (*ps)->stack_b;
-		while (i < size)
-		{
-			lst = lst->next;
-			i++;
-		}
-		tmp = lst;
-		while (lst->next)
-			lst = lst->next;
-		lst->next = (*ps)->stack_b;
-		(*ps)->stack_b = tmp->next;
-		tmp->next = NULL;
-	}
-	print_str("rrb");
+	if (c == 'a')
+		print_str("rra");
+	else
+		print_str("rrb");
 }
 
 void	rule_rrr(t_push_swap **ps)
 {
 	(*ps)->num_mov--;
-	rule_rra(ps);
-	rule_rrb(ps);
+	rule_rrx(ps, &(*ps)->stack_a, 'a');
+	rule_rrx(ps, &(*ps)->stack_b, 'b');
 }

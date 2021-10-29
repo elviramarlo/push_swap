@@ -6,7 +6,7 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 16:29:31 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/10/28 18:07:45 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/10/29 17:45:46 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	chunks(t_push_swap *ps, int num)
 	{
 		while (ps->i < ps->pos_first)
 		{
-			rule_ra(&ps);
+			rule_rx(&ps, &ps->stack_a, 'a');
 			ps->i++;
 		}
 	}
@@ -90,7 +90,7 @@ void	chunks(t_push_swap *ps, int num)
 	{
 		while (ps->i < ps->pos_second)
 		{
-			rule_rra(&ps);
+			rule_rrx(&ps, &ps->stack_a, 'a');
 			ps->i++;
 		}
 	}

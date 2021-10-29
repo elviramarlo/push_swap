@@ -6,11 +6,25 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 19:08:52 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/09/21 17:10:41 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/10/29 18:00:49 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static void	is_error(long long int signo, long long int sol)
+{
+	if (sol * signo > 2147483648)
+	{
+		printf("Error\n");
+		exit(1);
+	}
+	else if (sol * signo < -2147483648)
+	{
+		printf("Error\n");
+		exit(1);
+	}
+}
 
 int	ft_atoi(char *str)
 {
@@ -30,18 +44,7 @@ int	ft_atoi(char *str)
 	}
 	while (*str >= '0' && *str <= '9')
 	{
-		if (sol * signo > 2147483648)
-		{
-			printf("Error\n");
-			exit(1);
-			return (-1);
-		}
-		else if (sol * signo < -2147483648)
-		{
-			printf("Error\n");
-			exit(1);
-			return (0);
-		}
+		is_error(signo, sol);
 		sol = sol * 10 + (*str - 48);
 		str++;
 	}

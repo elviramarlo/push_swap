@@ -6,7 +6,7 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 16:40:23 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/10/28 18:41:08 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/10/29 18:35:05 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,11 @@ static void	check_only_spaces(char **argv)
 	while (argv[x])
 	{
 		if (argv[x][0] == '\0')
-		{
-			print_str("Error");
-			exit(1);
-		}
+			error("Error");
 		while (argv[x][y] == ' ')
 			y++;
 		if (argv[x][y] == '\0')
-		{
-			print_str("Error");
-			exit(-1);
-		}
+			error("Error");
 		x++;
 	}
 }
@@ -45,26 +39,22 @@ static void	check_arg(char **argv, int i)
 	while (argv[i][y])
 	{
 		if (!ft_isdigit(argv[i][y]) && !ft_strchr(argv[i], ' ')
-			&& !ft_strchr(argv[i], '-'))
-		{
-			print_str("Error");
-			exit(-1);
-		}
+			&& !ft_strchr(argv[i], '-') && !ft_strchr(argv[i], '+'))
+			error("Error");
 		if (ft_isalpha(argv[i][y]))
-		{
-			print_str("Error");
-			exit(-1);
-		}
-		if (argv[i][y] == '-' && (argv[i][y + 1] == ' ' ||
-			argv[i][y + 1] == '-' || argv[i][y + 1] == '\0'))
-		{	
-			print_str("Error");
-			exit(-1);
-		}
+			error("Error");
+		if ((argv[i][y] == '-' || argv[i][y] == '+') &&
+			(argv[i][y + 1] == ' ' || argv[i][y + 1] == '-' ||
+			argv[i][y + 1] == '\0' || argv[i][y + 1] == '+'))
+			error("Error");
 		y++;
 	}
 	check_only_spaces(argv);
 }
+
+/* 	print_stacks(ps);
+	printf("NUM MOVS: %d\n", ps->num_mov); */
+/* 	system("leaks push_swap"); */
 
 static void	sort_nums(t_push_swap *ps)
 {
@@ -75,9 +65,6 @@ static void	sort_nums(t_push_swap *ps)
 		sort_small_stack(ps, size);
 	else if (size > 5)
 		sort_big_stack(ps, size);
-	/* print_stacks(ps);
-	printf("NUM MOVS: %d\n", ps->num_mov);
-	system("leaks push_swap"); */
 }
 
 /* void	leaks(void)
@@ -121,10 +108,7 @@ int	main(int argc, char **argv)
 
 	ft_bzero(&ps, sizeof(t_push_swap));
 	if (argc < 2)
-	{
-		print_str("Error");
-		exit (-1);
-	}
+		error("Error");
 	else
 		make_list(&ps, argv);
 	sort_nums(&ps);

@@ -6,7 +6,7 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 17:12:23 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/10/28 18:21:00 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/10/29 17:41:26 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,21 @@ void	sort_three(t_push_swap *ps)
 	two = ps->stack_a->next->num;
 	three = ps->stack_a->next->next->num;
 	if (one > two && two < three && one < three)
-		rule_sa(ps);
+		rule_sx(ps, ps->stack_a, 'a');
 	else if (one > two && two < three && one > three)
-		rule_ra(&ps);
+		rule_rx(&ps, &ps->stack_a, 'a');
 	else if (one < two && two > three && one < three)
 	{
-		rule_sa(ps);
-		rule_ra(&ps);
+		rule_sx(ps, ps->stack_a, 'a');
+		rule_rx(&ps, &ps->stack_a, 'a');
 	}
 	else if (one > two && two > three && one > three)
 	{
-		rule_ra(&ps);
-		rule_sa(ps);
+		rule_rx(&ps, &ps->stack_a, 'a');
+		rule_sx(ps, ps->stack_a, 'a');
 	}
 	else if (one < two && two > three && one > three)
-		rule_rra(&ps);
+		rule_rrx(&ps, &ps->stack_a, 'a');
 }
 
 void	sort_four(t_push_swap *ps, int size)
@@ -58,9 +58,9 @@ void	sort_four(t_push_swap *ps, int size)
 	while (ps->stack_a->num != min_num)
 	{
 		if (i < size / 2)
-			rule_ra(&ps);
+			rule_rx(&ps, &ps->stack_a, 'a');
 		else
-			rule_rra(&ps);
+			rule_rrx(&ps, &ps->stack_a, 'a');
 	}
 	rule_pb(&ps);
 	sort_three(ps);
@@ -86,9 +86,9 @@ void	sort_five(t_push_swap *ps, int size)
 	while (ps->stack_a->num != min_num)
 	{
 		if (i < size)
-			rule_ra(&ps);
+			rule_rx(&ps, &ps->stack_a, 'a');
 		else
-			rule_rra(&ps);
+			rule_rrx(&ps, &ps->stack_a, 'a');
 	}
 	rule_pb(&ps);
 	sort_four(ps, size);
@@ -98,7 +98,7 @@ void	sort_five(t_push_swap *ps, int size)
 void	sort_small_stack(t_push_swap *ps, int size)
 {
 	if (size == 2)
-		rule_sa(ps);
+		rule_sx(ps, ps->stack_a, 'a');
 	if (size == 3)
 		sort_three(ps);
 	if (size == 4)

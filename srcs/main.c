@@ -6,7 +6,7 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 16:40:23 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/10/29 18:35:05 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/11/18 15:22:34 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,6 @@ static void	check_arg(char **argv, int i)
 	}
 	check_only_spaces(argv);
 }
-
-/* 	print_stacks(ps);
-	printf("NUM MOVS: %d\n", ps->num_mov); */
-/* 	system("leaks push_swap"); */
 
 static void	sort_nums(t_push_swap *ps)
 {

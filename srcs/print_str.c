@@ -6,7 +6,7 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/13 00:24:24 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/10/29 18:30:36 by elvmarti         ###   ########.fr       */
+/*   Updated: 2021/11/18 15:22:21 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,4 @@ void	print_str(char *str)
 	i = ft_strlen(str);
 	write (1, str, i);
 	write (1, "\n", 1);
-}
-
-void	print_lst(int i)
-{
-	printf("\t  %d\n", i);
-}
-
-void	print_stacks(t_push_swap *ps)
-{
-	write(1, "\n\tSTACK A\n", 10);
-	ft_lstiter_ps(ps->stack_a, print_lst);
-	write(1, "\n\tSTACK B\n", 10);
-	ft_lstiter_ps(ps->stack_b, print_lst);
-	write(1, "\n", 2);
 }

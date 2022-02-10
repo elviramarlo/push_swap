@@ -6,13 +6,11 @@
 #    By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/31 16:49:31 by elvmarti          #+#    #+#              #
-#    Updated: 2021/10/28 18:16:53 by elvmarti         ###   ########.fr        #
+#    Updated: 2022/02/10 17:07:13 by elvmarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
-
-FU_ELVIRA = push_swap_debug
 
 HEADER = push_swap.h
 
@@ -44,23 +42,17 @@ LIBFTNAME = libft.a
 LIBFT = $(LIBFTPATH)$(LIBFTNAME)
 
 $(NAME): $(OBJS) $(LIBFT)
-		@echo $(PURPLE)Compiling ... $(RESET)
+		@echo $(PURPLE)- Compiling - $(RESET)
 		$(CC) ${CFLAGS} ${OBJS} -I $(HEADER) -L. ${LIBFT} -o ${NAME}
 
-$(FU_ELVIRA): $(OBJS) $(LIBFT)
-		@echo $(PURPLE)Compiling ... $(RESET)
-		$(CC) ${CFLAGS} -I $(HEADER) -g ${SRCS} ${LIBFT} -o ${FU_ELVIRA}
-
 $(LIBFT):		
-		@echo $(PURPLE)Libft $(RESET)
+		@echo $(PURPLE)- Libft -$(RESET)
 		make re -C $(LIBFTPATH)
 
 all: $(NAME)
 
-debug: $(FU_ELVIRA)
-
 clean:
-		@echo $(PURPLE)Cleaning ... $(RED)
+		@echo $(PURPLE)- Cleaning -$(RED)
 		$(RM) $(OBJS) $(LIBFTPATH)*.o
 
 fclean: clean
@@ -95,16 +87,5 @@ RESET		:="\x1b[0m"
 #         --log-file=valgrind-out.txt \ Write to a file. Useful when output exceeds terminal space.
 #         ./executable exampleParam1
 # @valgrind --leak-check=full --track-origins=yes --log-file=./resources/info/valgrind-out.txt ./cub3D resources/maps/map01.cub --save || true
-
-#Easily push content to our repo
-git:
-		@echo $(GREEN)Status:$(RESET)
-		@git status || true 
-		@echo $(GREEN)GIT add ... $(RESET)
-		@git add . || true 
-		@echo $(GREEN)GIT commit ... $(RESET)
-		@git commit -m "push_swap" || true 
-		@echo $(GREEN)GIT push ... $(RESET)
-		@git push -u origin master --force || true 
 						
 .PHONY: all clean fclean re

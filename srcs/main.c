@@ -6,7 +6,7 @@
 /*   By: elvmarti <elvmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 16:40:23 by elvmarti          #+#    #+#             */
-/*   Updated: 2021/11/18 15:22:34 by elvmarti         ###   ########.fr       */
+/*   Updated: 2022/02/10 17:03:22 by elvmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ static void	check_arg(char **argv, int i)
 			error("Error");
 		if (ft_isalpha(argv[i][y]))
 			error("Error");
-		if ((argv[i][y] == '-' || argv[i][y] == '+') &&
-			(argv[i][y + 1] == ' ' || argv[i][y + 1] == '-' ||
+		if ((argv[i][y] == '-' || argv[i][y] == '+')
+			&& (argv[i][y + 1] == ' ' || argv[i][y + 1] == '-' ||
 			argv[i][y + 1] == '\0' || argv[i][y + 1] == '+'))
 			error("Error");
 		y++;
